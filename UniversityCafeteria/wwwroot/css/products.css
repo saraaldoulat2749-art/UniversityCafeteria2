@@ -1,0 +1,38 @@
+﻿body {
+}
+
+/* Page Background */
+body {
+    background-color: #f0f7ff;
+}
+
+/* Headings */
+h1 {
+    color: #174a7e;
+    text-align: center;
+    margin-top: 30px;
+}
+
+h3 {
+    color: #2563a6;
+    margin-top: 25px;
+}
+
+/* Product List */
+.product-list {
+    background-color: white;
+    padding: 20px 35px;
+    border-radius: 12px;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+    .product-list li {
+        padding: 10px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+        .product-list li:last-child {
+            border-bottom: none;
+        }
