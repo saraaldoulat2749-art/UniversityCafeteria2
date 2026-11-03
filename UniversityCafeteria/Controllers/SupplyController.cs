@@ -6,6 +6,8 @@ namespace UniversityCafeteria.Controllers
     {
         public IActionResult Index()
         {
+            string[] Categories = { "Drinks", "Food", "Snacks", "Hot Drinks", "Cold Drinks" };
+            ViewBag.Categories = Categories;
             return View();
         }
 
@@ -22,22 +24,33 @@ namespace UniversityCafeteria.Controllers
         public IActionResult Suppliers()
         {
             ViewBag.PageTitle ="Our Suppliers";
-            ViewBag.NumberOfProducts = 3;
+            ViewBag.NumberOfSuppliers = 3;
             string[] suppliers = { "Fresh Food Company", "Happy Drinks Company", "Daily Supplies Company" };
             ViewBag.Suppliers = suppliers;
             return View();
         }
-
+        [HttpGet]
         public IActionResult CreateRequest()
         {
             return View();
         }
-
+        [HttpPost]
         public IActionResult SubmitRequest()
         {
-            return View();
-        }
+            string employeeName = Request.Form["EmployeeName"];
+            string productName = Request.Form["ProductName"];
+            int quantity = int.Parse(Request.Form["Quantity"]);
+            DateTime requiredDate = DateTime.Parse(Request.Form["RequiredDate"]);
+            if (string.IsNullOrEmpty(employeeName))
+            {
+                ViewBag.Message = "Employee Name is required!";
+                return View("CreateRequest");
+            }
+            TempData["Message"] = "Request submitted successfully!";
 
+            return RedirectToAction("About");
+        }
+        [HttpGet]
         public IActionResult About()
         {
             return View();

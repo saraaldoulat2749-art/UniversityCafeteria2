@@ -3,3 +3,52 @@
 *@
 @{
 }
+
+<h2>Create Supply Request</h2>
+
+<form method="post" action="/Supply/SubmitRequest">
+
+    <label>Employee Name</label>
+    <input type="text"
+           name="EmployeeName"
+           class="form-control" />
+
+    <br />
+
+    <label>Product Name</label>
+    <select name="ProductName" class="form-select">
+        <option>Water</option>
+        <option>Orange Juice</option>
+        <option>Coffee</option>
+        <option>Sandwich</option>
+        <option>Chocolate</option>
+    </select>
+
+    <br />
+
+    <label>Quantity</label>
+    <input type="number"
+           name="Quantity"
+           class="form-control"
+           required />
+
+    <br />
+
+    <label>Required Date</label>
+    <input type="date"
+           name="RequiredDate"
+           class="form-control" />
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">
+        Submit Request
+    </button>
+
+</form>
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Message
+    </div>
+}
