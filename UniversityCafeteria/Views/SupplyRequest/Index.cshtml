@@ -1,0 +1,100 @@
+﻿
+@using UniversityCafeteria.Models
+
+<h2>Create Supply Request</h2>
+
+@if (ViewBag.Message != null)
+{
+    <p>@ViewBag.Message</p>
+}
+
+<form method="post" action="@Url.Action("AddItem", "SupplyRequest")">
+
+    <label>Product Name</label>
+    <input type="text" name="ProductName" />
+
+    <br /><br />
+
+    <label>Category</label>
+    <input type="text" name="Category" />
+
+    <br /><br />
+
+    <label>Quantity</label>
+    <input type="number" name="Quantity" />
+
+    <br /><br />
+
+    <label>Unit Price</label>
+    <input type="number" name="UnitPrice" step="0.01" />
+
+    <br /><br />
+
+    <label>Priority</label>
+   <select name="Priority">
+    <option value="Normal"
+            selected="@(ViewBag.Priority == "Normal")">
+        Normal
+    </option>
+
+    <option value="Urgent"
+            selected="@(ViewBag.Priority == "Urgent")">
+        Urgent
+    </option>
+
+    <option value="Emergency"
+            selected="@(ViewBag.Priority == "Emergency")">
+        Emergency
+    </option>
+</select>
+
+    <br /><br />
+
+    <button type="submit">Add Product</button>
+
+</form>
+
+<hr />
+
+<h3>Added Products</h3>
+
+<pre>@ViewBag.Products</pre>
+
+  
+@if (TempData["Message"] != null)
+{
+    <p>@TempData["Message"]</p>
+}  <br/>
+
+<a href="@Url.Action("Review", "SupplyRequest")"
+   class="btn btn-primary">
+    Review Request
+</a>
+
+<form method="post"
+      action="@Url.Action("ClearDraft", "SupplyRequest")">
+
+    <button type="submit" class="btn btn-danger">
+        Clear Draft
+    </button>
+
+</form>
+<h3>Preferred Priority</h3>
+
+<form method="post"
+      action="@Url.Action("SavePreference", "SupplyRequest")">
+
+    <select name="priority">
+        <option value="Normal">Normal</option>
+        <option value="Urgent">Urgent</option>
+        <option value="Emergency">Emergency</option>
+    </select>
+
+    <button type="submit">Save Preference</button>
+</form>
+  @if (ViewBag.Priority != null)
+{
+    <p>
+        Your preferred request priority is @ViewBag.Priority.
+    </p>
+}          

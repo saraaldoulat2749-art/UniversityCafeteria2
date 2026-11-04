@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@using UniversityCafeteria.Models
+
+<h2>My Supply Requests</h2>
+
+@if (TempData["Message"] != null)
+{
+    <p>@TempData["Message"]</p>
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Request ID</th>
+        <th>Number of Products</th>
+        <th>Subtotal</th>
+        <th>Preparation Fee</th>
+        <th>Discount</th>
+        <th>Final Total</th>
+        <th>Status</th>
+    </tr>
+
+    @foreach (SupplyRequest item in ViewBag.Requests)
+    {
+        <tr>
+            <td>@item.RequestID</td>
+            <td>@item.NumberOfProducts</td>
+            <td>@item.Subtotal JD</td>
+            <td>@item.Fee JD</td>
+            <td>@item.Discount JD</td>
+            <td>@item.Total JD</td>
+            <td>@item.Status</td>
+        </tr>
+    }
+</table>
